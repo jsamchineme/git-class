@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Manipulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Dom Manipulation</h1>
+
+    <div class="page-container">
+        <div class="product-list" id="all-products-list">
+            <div class="product-item">
+                <div class="container">
+                    <div class="product-name">${product.productName}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-stock-count">${product.numberInStock}</div>
+                    <div class="product-price">${product.price}</div>
+                    <button class="add" data-id="${product.id}">Add to Cart</button>
+                    <input type="text" placeholder="specify quantity" id="quantity-${product.id}" />
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="container">
+                    <div class="product-name">${product.productName}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-stock-count">${product.numberInStock}</div>
+                    <div class="product-price">${product.price}</div>
+                    <button class="add" data-id="${product.id}">Add to Cart</button>
+                    <input type="text" placeholder="specify quantity" id="quantity-${product.id}" />
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="container">
+                    <div class="product-name">${product.productName}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-stock-count">${product.numberInStock}</div>
+                    <div class="product-price">${product.price}</div>
+                    <button class="add" data-id="${product.id}">Add to Cart</button>
+                    <input type="text" placeholder="specify quantity" id="quantity-${product.id}" />
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="container">
+                    <div class="product-name">${product.productName}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-stock-count">${product.numberInStock}</div>
+                    <div class="product-price">${product.price}</div>
+                    <button class="add" data-id="${product.id}">Add to Cart</button>
+                    <input type="text" placeholder="specify quantity" id="quantity-${product.id}" />
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="container">
+                    <div class="product-name">${product.productName}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-stock-count">${product.numberInStock}</div>
+                    <div class="product-price">${product.price}</div>
+                    <button class="add" data-id="${product.id}">Add to Cart</button>
+                    <input type="text" placeholder="specify quantity" id="quantity-${product.id}" />
+                </div>
+            </div>
+            <div class="product-item">
+                <div class="container">
+                    <div class="product-name">${product.productName}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-stock-count">${product.numberInStock}</div>
+                    <div class="product-price">${product.price}</div>
+                    <button class="add" data-id="${product.id}">Add to Cart</button>
+                    <input type="text" placeholder="specify quantity" id="quantity-${product.id}" />
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="cart">
+            <h1>Cart</h1>
+            <div class="product-list" id="cart-products-list">
+            </div>
+        </div> 
+    </div>
+
+<script src="dom.js"></script>
+</body>
+</html>
+
