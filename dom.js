@@ -149,4 +149,54 @@ render();
 function render() {
     allProductListContainer.innerHTML = generateProducts(allProducts, "product-list");
     cartProductListContainer.innerHTML = generateProducts(cartProducts, "cart-list");
+
+    bindEvents();
+}
+
+function bindEvents() {
+    const addToCartButtons = document.getElementsByClassName("add");
+    for(let i=0; i < addToCartButtons.length; i++) {
+        if (addToCartButtons[i]) {
+            addToCartButtons[i].addEventListener("click", addToCart);
+        }
+    }
+}
+
+function addToCart(event) {    
+    const productId = Number(event.target.dataset.id);
+    const product = allProducts.find((item) => item.id === productId);
+
+    let cartProductIndex;
+    const productFromCart = cartProducts.find((item, index) => {
+        cartProductIndex = index;
+        return item.id === productId;
+    });
+
+    const quantityInput = document.getElementById(`quantity-${productId}`);
+    const productQuantity = Number(quantityInput.value) || 1;
+
+    if (productFromCart) {
+        if (productFromCart.quantity + productQuantity > product.numberInStock) {
+            return alert("the product quantity selected is more than what we have in stock");
+        }
+
+        // update the product in the cart with the new selected quantity
+        productFromCart.quantity = productFromCart.quantity + productQuantity;
+
+        // update the selected product, increasing the quantity by the new selection
+        cartProducts[cartProductIndex] = productFromCart;
+        return render();
+    }
+
+    if (product.numberInStock < productQuantity) {
+        return alert("the product quantity selected is more than what we have in stock");
+    }
+
+    const newCartProduct = {
+        ...product,
+        quantity: productQuantity
+    }
+    cartProducts.push(newCartProduct);
+    
+    render();
 }
