@@ -150,3 +150,35 @@ function render() {
     allProductListContainer.innerHTML = generateProducts(allProducts, "product-list");
     cartProductListContainer.innerHTML = generateProducts(cartProducts, "cart-list");
 }
+
+function addToCart(event) {    
+    const productId = Number(event.target.dataset.id);
+    const product = allProducts.find((item) => item.id === productId);
+
+    let cartProductIndex;
+    const productFromCart = cartProducts.find((item, index) => {
+        cartProductIndex = index;
+        return item.id === productId;
+    });
+
+    const quantityInput = document.getElementById(`quantity-${productId}`);
+    const productQuantity = Number(quantityInput.value) || 1;
+
+    if (productFromCart) {
+        // update the product in the cart with the new selected quantity
+        productFromCart.quantity = productFromCart.quantity + productQuantity;
+
+        // update the selected product, increasing the quantity by the new selection
+        cartProducts[cartProductIndex] = productFromCart;
+        return render();
+    }
+
+
+    const newCartProduct = {
+        ...product,
+        quantity: productQuantity
+    }
+    cartProducts.push(newCartProduct);
+    
+    render();
+}
