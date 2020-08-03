@@ -149,6 +149,17 @@ render();
 function render() {
     allProductListContainer.innerHTML = generateProducts(allProducts, "product-list");
     cartProductListContainer.innerHTML = generateProducts(cartProducts, "cart-list");
+
+    bindEvents();
+}
+
+function bindEvents() {
+    const addToCartButtons = document.getElementsByClassName("add");
+    for(let i=0; i < addToCartButtons.length; i++) {
+        if (addToCartButtons[i]) {
+            addToCartButtons[i].addEventListener("click", addToCart);
+        }
+    }
 }
 
 function addToCart(event) {    
