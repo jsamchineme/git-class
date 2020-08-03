@@ -176,6 +176,10 @@ function addToCart(event) {
     const productQuantity = Number(quantityInput.value) || 1;
 
     if (productFromCart) {
+        if (productFromCart.quantity + productQuantity > product.numberInStock) {
+            return alert("the product quantity selected is more than what we have in stock");
+        }
+
         // update the product in the cart with the new selected quantity
         productFromCart.quantity = productFromCart.quantity + productQuantity;
 
@@ -184,6 +188,9 @@ function addToCart(event) {
         return render();
     }
 
+    if (product.numberInStock < productQuantity) {
+        return alert("the product quantity selected is more than what we have in stock");
+    }
 
     const newCartProduct = {
         ...product,
